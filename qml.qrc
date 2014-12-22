@@ -1,7 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>MainForm.ui.qml</file>
         <file>SpaceShip.qml</file>
         <file>SpaceScene.qml</file>
         <file>Rocket.qml</file>

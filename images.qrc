@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/saturn.png</file>
+        <file>images/jupiter.png</file>
+        <file>images/republic_gunship.png</file>
+        <file>images/viper_mark_ii.png</file>
+        <file>images/space.jpg</file>
+        <file>images/stars.png</file>
+        <file>Explode.qml</file>
+        <file>images/explode_particle.png</file>
+    </qresource>
+</RCC>

@@ -1,5 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>werewolf-restless.mp3</file>
+        <file>sounds/cannon-shot.mp3</file>
+        <file>music/werewolf-restless.mp3</file>
+        <file>sounds/cannon-shot.wav</file>
+        <file>sounds/explosion-02.wav</file>
     </qresource>
 </RCC>
