@@ -2,6 +2,7 @@ import QtQuick 2.0
 import Bacon2D 1.0
 import QtMultimedia 5.0
 import QtQuick.Particles 2.0
+import "."
 
 PhysicsEntity {
     property real angle : 0
@@ -44,26 +45,21 @@ PhysicsEntity {
     }
 
     function shoot() {
-        if (!rocketComponent)
-            rocketComponent = Qt.createComponent("Rocket.qml");
-        if (!explodeComponent)
-            explodeComponent = Qt.createComponent("Explode.qml");
         console.log("BANG")
-
-        var rocket = rocketComponent.createObject(scene);
-        rocket.explodeComponent = explodeComponent
+        var rocket = Common.rocketComponent.createObject(scene);
         var pt = toWorldPoint(Qt.point(width / 2, height + 10))
         rocket.x = pt.x;
         rocket.y = pt.y;
-        var impulse = 10;
+        var impulse = 20;
         var impulseAngle = angle + 90
         var impulseX = impulse * Math.cos(impulseAngle * Math.PI / 180);
         var impulseY = impulse * Math.sin(impulseAngle * Math.PI / 180);
         rocket.applyLinearImpulse(Qt.point(impulseX,impulseY), rocket.getWorldCenter());
-        rocket.rotation = impulseAngle + 90
+        rocket.rotation = impulseAngle + 90 - 10
+        console.log("angle", angle, impulseAngle, rocket.rotation, rocket.getWorldCenter())
 
-        var shotSound = shotSoundComponent.createObject()
-        shotSound.play();
+//        var shotSound = shotSoundComponent.createObject()
+//        shotSound.play();
     }
 
     Component

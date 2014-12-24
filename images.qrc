@@ -6,7 +6,7 @@
         <file>images/viper_mark_ii.png</file>
         <file>images/space.jpg</file>
         <file>images/stars.png</file>
-        <file>Explode.qml</file>
         <file>images/explode_particle.png</file>
+        <file>images/rocket.png</file>
     </qresource>
 </RCC>

@@ -2,8 +2,8 @@ import QtQuick 2.0
 import QtQuick.Particles 2.0
 
 ParticleSystem {
-    property real time: 600
-    property color color: "yellow"
+    property real time: 700
+    property color color: "orange"
 
     width: 100
     height: 100
@@ -14,9 +14,9 @@ ParticleSystem {
     property real textDistance: 50
 
     function boom() {
-        console.log("<ed4b3909>")
-        explodeEmitter.burst(100)
+//        explodeEmitter.burst(100)
         timer.start()
+        explodeTimer.start()
         textAngle = Math.random() * 90 - 45
 
         switch (Math.floor(Math.random() * 4))
@@ -28,19 +28,27 @@ ParticleSystem {
         }
 
         textAnimation.start()
+        explodeEmitter.enabled = true
     }
 
     ImageParticle {
         groups: ["explode"]
-        source: "images/explode_particle.png"
-//        colorVariation: 0.2
+        source: "qrc:///particleresources/fuzzydot.png"
+//        source: "images/explode_particle.png"
+        color: root.color
+        colorVariation: 0.2
+    }
+
+    Timer {
+        id: explodeTimer
+        interval: 100
+        onTriggered: explodeEmitter.enabled = false
     }
 
     Timer {
         id: timer
         interval: root.time
         onTriggered: {
-//            explodeEmitter.enabled = false
             root.destroy()
         }
     }
@@ -50,9 +58,8 @@ ParticleSystem {
         opacity: 0
         font.pixelSize: 40
         font.bold: true
-        text: "BOOM!"
         rotation: root.textAngle
-        color: "yellow"
+        color: root.color
     }
 
     ParallelAnimation {
@@ -90,8 +97,9 @@ ParticleSystem {
     Emitter {
         id: explodeEmitter
         group: "explode"
-        lifeSpan: root.time
+        lifeSpan: root.time - lifeSpanVariation
         lifeSpanVariation: 500
+        emitRate: 1000
         size: 20
         endSize: 0
         sizeVariation: 4

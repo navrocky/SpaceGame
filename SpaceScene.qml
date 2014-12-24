@@ -26,6 +26,11 @@ Game {
         backgroundMusic.play()
     }
 
+    QtObject {
+        id: d
+
+    }
+
     Scene {
         id: scene
         anchors.fill: parent
@@ -33,7 +38,21 @@ Game {
         running: true
         gravity: Qt.point(0,0)
         scale: 1
-//        debug: true
+        debug: true
+
+
+        property var gravityItems
+        Component.onCompleted: updateGravityItems()
+        function updateGravityItems() {
+            gravityItems = []
+            for (var i = 0; i < scene.children.length; i++) {
+                var item = scene.children[i]
+                if (item.gravityMass)
+                    gravityItems.push(item)
+            }
+
+            console.log("Gravity items count", gravityItems.length)
+        }
 
         property real backgroundAngle: spaceShip.angle / 360 * 2* Math.PI
 
@@ -99,6 +118,7 @@ Game {
         }
 
         Planet {
+            id: planet1
             x: 100
             y: 200
             radius: 70
@@ -107,20 +127,33 @@ Game {
         }
 
         Planet {
-            x: 500
-            y: 400
+            id: planet2
+            x: 700
+            y: 250
+            radius: 50
+            source: "images/saturn.png"
+            imageScale: 0.69
+            rotation: 50
+        }
+
+        Planet {
+            id: planet3
+            x: 1000
+            y: 500
+            radius: 70
+            source: "images/jupiter.png"
+            imageScale: 0.72
+        }
+
+        Planet {
+            id: planet4
+            x: 300
+            y: 600
             radius: 50
             source: "images/saturn.png"
             imageScale: 0.69
         }
 
-        Planet {
-            x: 800
-            y: 300
-            radius: 70
-            source: "images/jupiter.png"
-            imageScale: 0.72
-        }
 
         MouseArea {
             anchors.fill: parent

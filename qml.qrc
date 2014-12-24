@@ -5,5 +5,8 @@
         <file>SpaceScene.qml</file>
         <file>Rocket.qml</file>
         <file>Planet.qml</file>
+        <file>Explode.qml</file>
+        <file>Common.qml</file>
+        <file>qmldir</file>
     </qresource>
 </RCC>
