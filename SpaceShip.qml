@@ -47,7 +47,7 @@ PhysicsEntity {
     function shoot() {
         console.log("BANG")
         var rocket = Common.rocketComponent.createObject(scene);
-        var pt = toWorldPoint(Qt.point(width / 2, height + 10))
+        var pt = toWorldPoint(Qt.point(width / 2, height + rocket.height + 5))
         rocket.x = pt.x;
         rocket.y = pt.y;
         var impulse = 20;
@@ -55,7 +55,7 @@ PhysicsEntity {
         var impulseX = impulse * Math.cos(impulseAngle * Math.PI / 180);
         var impulseY = impulse * Math.sin(impulseAngle * Math.PI / 180);
         rocket.applyLinearImpulse(Qt.point(impulseX,impulseY), rocket.getWorldCenter());
-        rocket.rotation = impulseAngle + 90 - 10
+        rocket.rotation = impulseAngle + 90
         console.log("angle", angle, impulseAngle, rocket.rotation, rocket.getWorldCenter())
 
 //        var shotSound = shotSoundComponent.createObject()

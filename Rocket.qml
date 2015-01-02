@@ -17,19 +17,19 @@ PhysicsEntity {
     }
 
     fixtures: [
+//        Box {
+//            width: target.width
+//            height: target.height
+//            density: 10
+//            friction: 1
+//            restitution: 0
+//        },
         Box {
             width: target.width
             height: target.height
-            density: 10
-            friction: 1
-            restitution: 0
-        },
-        Box {
-            width: target.width
-            height: target.width
-            y: -width
+//            y: -width
             sensor: true
-//            density: 0
+            density: 10
 
             onBeginContact: {
                 console.log("BOOM!", Common.value)
@@ -60,7 +60,7 @@ PhysicsEntity {
                 return
             }
             var force = Common.calculateForceForItem(root, 2)
-            console.log("force ", force)
+//            console.log("force ", force)
             applyForceToCenter(force)
         }
     }

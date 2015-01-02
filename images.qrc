@@ -4,9 +4,15 @@
         <file>images/jupiter.png</file>
         <file>images/republic_gunship.png</file>
         <file>images/viper_mark_ii.png</file>
-        <file>images/space.jpg</file>
         <file>images/stars.png</file>
         <file>images/explode_particle.png</file>
         <file>images/rocket.png</file>
+        <file>images/bg_1024.jpg</file>
+        <file>images/planet1.png</file>
+        <file>images/planet2.png</file>
+        <file>images/planet3.png</file>
+        <file>images/planet4.png</file>
+        <file>images/planet5.png</file>
+        <file>images/star_particle.png</file>
     </qresource>
 </RCC>

@@ -8,5 +8,8 @@
         <file>Explode.qml</file>
         <file>Common.qml</file>
         <file>qmldir</file>
+        <file>MainMenu.qml</file>
+        <file>LoadingPage.qml</file>
+        <file>AppStackView.qml</file>
     </qresource>
 </RCC>

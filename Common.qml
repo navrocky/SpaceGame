@@ -5,6 +5,9 @@ QtObject {
     property Component explodeComponent : Qt.createComponent("Explode.qml")
     property Component rocketComponent: Qt.createComponent("Rocket.qml")
 
+    // main app stack view
+    property AppStackView appStackView
+
     function calculateForceForItem(item, mass) {
         var scene = item.game.currentScene
         var items = scene.gravityItems
