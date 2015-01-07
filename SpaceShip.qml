@@ -5,44 +5,57 @@ import QtQuick.Particles 2.0
 import "."
 
 PhysicsEntity {
+
     property real angle : 0
     property var scene
     property url source: "images/viper_mark_ii.png"
     property color flameColor: "orange"
 
+    property real scale: 1.0
+
     property var rocketComponent
     property var explodeComponent
 
     id: root
-    width: 50
-    height: 100
+    width: 0
+    height: 0
     bodyType: Body.Static
 
-    ParticleSystem {
-        anchors.fill: parent
+    function activate() {
+        focus = true
+    }
 
-        ImageParticle {
-            id: engine
-            groups: ["engine"]
-            source: "qrc:///particleresources/fuzzydot.png"
-            color: root.flameColor
-            colorVariation: 0.2
-        }
+    Keys.onPressed: {
+        if (event.key === Qt.Key_A) {
 
-        Emitter {
-            group: "engine"
-            emitRate: 100
-            lifeSpan: 500
-            size: 10
-            endSize: 4
-            sizeVariation: 4
-            velocity: PointDirection { x: 0; y: -100; xVariation: 32 }
-            height: 10
-            x: (root.width - width) / 2
-            y: -10
-            width: 10
         }
     }
+
+//    ParticleSystem {
+//        anchors.fill: parent
+
+//        ImageParticle {
+//            id: engine
+//            groups: ["engine"]
+//            source: "qrc:///particleresources/fuzzydot.png"
+//            color: root.flameColor
+//            colorVariation: 0.2
+//        }
+
+//        Emitter {
+//            group: "engine"
+//            emitRate: 100
+//            lifeSpan: 500
+//            size: 10
+//            endSize: 4
+//            sizeVariation: 4
+//            velocity: PointDirection { x: 0; y: -100; xVariation: 32 }
+//            height: 10
+//            x: (root.width - width) / 2
+//            y: -10
+//            width: 10
+//        }
+//    }
 
     function shoot() {
         console.log("BANG")
@@ -107,6 +120,7 @@ PhysicsEntity {
 
     Image {
         anchors.centerIn: parent
+        scale: root.scale
         source: root.source
     }
 }

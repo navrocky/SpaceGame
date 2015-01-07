@@ -3,12 +3,13 @@ import QtGraphicalEffects 1.0
 import "."
 
 FocusScope {
+    focus: true
+
     property var menuModel : [
         {
             title: qsTr("Play game!"),
             exec: function () {
-//                var pageComponent = Qt.createComponent("LoadingPage.qml")
-//                Common.appStackView.push(pageComponent)
+                Common.executeLevel(1);
             }
         },
         {
@@ -24,11 +25,38 @@ FocusScope {
             }
         }]
 
-    function goToGame() {
-        goToGameAnimation.start()
+    id: root
+
+    Component.onCompleted: {
+        Common.backgroundMusic.play()
+
     }
 
-    id: root
+//    Loader {
+
+//    }
+
+//    SpaceScene {
+//        id: scene
+//        anchors.fill: parent
+//        focus: false
+//        visible: false
+//    }
+
+//    Desaturate {
+//        id: desaturate
+//        source: scene
+//        desaturation: 0.5
+//        anchors.fill: scene
+//        visible: false
+//    }
+
+//    FastBlur {
+//        source: desaturate
+//        radius: 40
+//        anchors.fill: scene
+//    }
+
 
     Item {
         anchors.fill: parent
@@ -58,7 +86,8 @@ FocusScope {
                         anchors.horizontalCenter: parent.horizontalCenter
                         color: "white"
                         font.pixelSize: 60
-                        font.bold: true
+//                        font.bold: true
+                        font.family: Common.baseFont.name
                         style: Text.Outline
                         styleColor: "black"
                     }
@@ -109,7 +138,7 @@ FocusScope {
                     height: contentHeight
                     model: root.menuModel
                     highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
-                    delegate: Item {
+                    delegate: FocusScope {
                         width: 200
                         height: text.implicitHeight + 20
                         property var modelItem: model.modelData
@@ -120,9 +149,13 @@ FocusScope {
                             text: modelItem.title
                             color: "white"
                             font.pixelSize: 20
+                            font.family: Common.baseFontName
                             style: Text.Outline
                             styleColor: "black"
-                            font.bold: true
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: root.menuModel[menu.currentIndex].exec()
                         }
                     }
                     Keys.onReturnPressed: root.menuModel[menu.currentIndex].exec()

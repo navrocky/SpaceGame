@@ -8,7 +8,7 @@ PhysicsEntity {
 
     property real radius: 100
     property color color: "red"
-    property url source
+    property url source: "images/planet1.png"
     property real imageScale: 1.0
 
     id: root

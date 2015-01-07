@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scene
+    title="Tutorial"
+    thumbnail=""
+    width="1920"
+    height="1080"
+    padding="200"
+    background="bg1.jpg"
+    grid="0">
+
+  <player title="Player 1" color="blue" pos="-540,-300" angle="45"/>
+  <player title="Player 2" color="red" pos="540,300" angle="225"/>
+  <!--<player title="Player 3" color="red" pos="0,0" angle="225"/>-->
+
+  <planet pos="-400,100" mass="0.8e15" type="1" scale="1.5">
+    <satellite mass="1e14" type="0" orbit="200" radial_speed="14" scale="2">
+      <satellite mass="1e14" type="1" orbit="50" radial_speed="36" scale="1"/>
+    </satellite>
+  </planet>
+  <planet pos="400,-100" mass="1.5e15" type="2">
+    <satellite mass="1e14" type="2" orbit="200" radial_speed="18" angle="120" scale="1.5"/>
+    <satellite mass="1e14" type="2" orbit="300" radial_speed="9" angle="300" scale="2"/>
+  </planet>
+  <anomaly pos="-200,-350" mass="1.5e15" type="2" scale="0.8" />
+  <comet pos="0,0" scale="1" orbit_x="1000" orbit_y="500" radial_speed="14"/>
+  <asteroid type="0" pos="0,0" mass="1e03" scale="1" />
+  <asteroid type="1" pos="40,-100" mass="1e03" scale="1" />
+  <asteroid type="0" pos="80,20" mass="1e03" scale="1" />
+  <asteroid type="0" pos="-40,60" mass="1e03" scale="1" />
+</scene>

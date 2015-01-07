@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>levels/level1.xml</file>
+    </qresource>
+</RCC>

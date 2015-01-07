@@ -1,12 +1,26 @@
 pragma Singleton
-import QtQuick 2.0
+import QtQuick 2.3
+import QtMultimedia 5.0
 
 QtObject {
     property Component explodeComponent : Qt.createComponent("Explode.qml")
     property Component rocketComponent: Qt.createComponent("Rocket.qml")
 
     // main app stack view
-    property AppStackView appStackView
+    property Item appStackView
+
+    property string baseFontName : baseFont.name
+
+    property FontLoader baseFont : FontLoader {
+        source: "qrc:/fonts/Interstellar.otf"
+    }
+
+    property Audio backgroundMusic : Audio {
+        id: backgroundMusic
+        source: "qrc:/music/werewolf-restless.mp3"
+        volume: 0.5
+        loops: Audio.Infinite
+    }
 
     function calculateForceForItem(item, mass) {
         var scene = item.game.currentScene
@@ -32,5 +46,10 @@ QtObject {
             force.y += distanceVector.y * k
         }
         return force
+    }
+
+    function executeLevel(number) {
+        appStackView.push({item: Qt.resolvedUrl("SpaceScene.qml"),
+                                     properties: {levelXmlFile: ":/levels/level" + number + ".xml"}})
     }
 }
